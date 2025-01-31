@@ -1,0 +1,35 @@
+user_client_domains: []
+
+service_client_domains:
+  # template generic domains
+  - name: "testing.template.host_domain.com"
+    delivery: "virtual"
+    features: ["mailbox", "webmail", "mx"]
+    ox_cluster: "single-server"
+    context_id: "1"
+    cert_name: client_testing_template
+    dkim_selector: ox2024
+    platform: template
+    no_proxy: true
+  - name: "system.template.host_domain.com"
+    delivery: "virtual"
+    features: ["mailbox", "mx"]
+    cert_name: client_system_template
+    dkim_selector: ox2024
+    platform: template
+    no_proxy: true
+
+client_domains: "{{ (user_client_domains + service_client_domains) }}"
+
+platforms:
+  template:
+    tech_domain:
+      name: "template.tech_domain.com"
+      cert_name: tech_cert_template
+      dkim_selector: ox2024
+    host_domain:
+      name: "template.host_domain.com"
+
+platform: "{{ platforms[env_name] }}"
+services_state: "{{ platform.get('services_state', 'started') }}"
+services_handler: "{{ platform.get('services_state', 'restarted') }}"
