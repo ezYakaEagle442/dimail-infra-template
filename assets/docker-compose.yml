@@ -1,0 +1,16 @@
+services:
+  generate-key:
+    build: .
+    entrypoint: |
+      opendkim-genkey
+      --verbose
+      --hash-algorithms sha256
+      --bits 4096
+      --directory /etc/opendkim/private/
+      --append-domain
+    command: --domain ${DOMAIN} --selector ${SELECTOR}
+    volumes:
+      - ./:/etc/opendkim/private
+    environment:
+      - DOMAIN=${DOMAIN}
+      - SELECTOR=${SELECTOR}
