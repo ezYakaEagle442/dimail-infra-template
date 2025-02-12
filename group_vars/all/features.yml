@@ -1,0 +1,13 @@
+features:
+  use_local_resolver: true
+  # use_local_resolver: when true, bind9 will be installed on all the servers
+  # and resolv.conf will be modified to use that local resolver. It reduces the
+  # load on public DNS servers and is required for using public RBLs which are dns
+  # based.
+  use_custom_sshd_config: true
+  # use_custom_sshd_config: when true, we will install a minimal sshd_config file
+  # on all the servers, allwing only ssh connection with keys, and allowing only
+  # few users (the default one, according to the hosting environment, and the user
+  # 'api').
+  # Whatever the value of this flag, we do check that the 'api' user is allowed to
+  # connect, for managing the platform.
