@@ -11,3 +11,9 @@ features:
   # 'api').
   # Whatever the value of this flag, we do check that the 'api' user is allowed to
   # connect, for managing the platform.
+  use_s3_for_replication: true
+  # use_s3_for_replication: when true, to setup the MySql replication, we will push
+  # the dump on S3 (from master) and pull it from S3 (on slave).
+  # When false, the dump will be pulled on the host running ansible (from master)
+  # and then pushed to the slave.
+
