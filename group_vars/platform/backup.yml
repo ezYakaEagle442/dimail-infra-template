@@ -1,0 +1,17 @@
+# s3_credentials is defined in passwords.yml
+
+# The kopia variable must be provided when features.use_kopia_for_backup is true
+kopia:
+  bucket_name: the name of the S3 bucket used for kopia backups
+  s3_credentials: "{{ s3_credentials.your_s3_provider }}"
+  password: a secret password for the kopia backup (symetric cypher key)
+
+# The rclone variable must be provided when:
+# - features.use_rclone_for_backup is true
+# - or features.use_s3_for_replication is true
+rclone:
+  bucket_name: the name of the s3 bucket used for rclone backups
+  s3_credentials: "{{ s3_credentials.your_s3_provider }}"
+  profile: used as a prefix for dirnames in the bucket (can be "dev" or "prod",
+   or anything else)
+

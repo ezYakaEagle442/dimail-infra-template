@@ -19,3 +19,11 @@ features:
   use_policyd_rate_limit: true
   # use_policyd_rate_limit: when true, policyd-rate-limit will be used, you need to
   # setup the variable with config elems in misc.yaml
+  use_kopia_for_backup: true
+  # use_kopia_for_backup: when true, will use kopia to make backups in an S3 bucket
+  # it will be used to backup the mariadb dumps, and to make a full copy with
+  # snapshots of the mailboxes
+  use_rclone_for_backup: true
+  # use_rclone_for_backup: when true, will use rclone to make backups in an S3 bucket
+  # it will be used to backup the mariadb dumps, and to make a full copy of the
+  # mailboxes
