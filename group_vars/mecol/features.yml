@@ -16,4 +16,6 @@ features:
   # the dump on S3 (from master) and pull it from S3 (on slave).
   # When false, the dump will be pulled on the host running ansible (from master)
   # and then pushed to the slave.
-
+  use_policyd_rate_limit: true
+  # use_policyd_rate_limit: when true, policyd-rate-limit will be used, you need to
+  # setup the variable with config elems in misc.yaml

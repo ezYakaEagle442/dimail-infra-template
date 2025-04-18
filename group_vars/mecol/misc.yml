@@ -3,6 +3,24 @@ prometheus:
   mysql:
     pwd: "{{ mysql_prometheus_pwd }}"
 
+# Configuration for policyd-rate-limit
+policyd_rate_limit:
+  debug: false
+  default_limits:
+    - [100, 60] # Max 100 mails toutes les 60 secondes (donc, de fait, max 60 destinataires pour un mail)
+    - [1000, 3600] # Max 1000 mails par heure
+    - [3615, 99812] # Max 3615 mails toutes les 99812 secondes
+  report_recipients:
+    # Un mail de rapport est envoyé tous les jours avec les mails qui ont "tapé" leur
+    # limite. Liste des destinataires du rapport :
+    - bob@leponge.fr
+  report_limits:
+    # Liste des limites qu'on surveille pour faire le rapport
+    # Exemple : on veut les gens qui ont tapé la limité des 100/60s et ceux qui ont
+    # tapé la limite 3615/99812, mais la limite horaire ne nous intéresse pas
+    - 60
+    - 99812
+
 # BACKUP S3 CREDENTIALS
 #rclone:
 #  s3:
