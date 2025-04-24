@@ -27,3 +27,10 @@ features:
   # use_rclone_for_backup: when true, will use rclone to make backups in an S3 bucket
   # it will be used to backup the mariadb dumps, and to make a full copy of the
   # mailboxes
+  use_dimail_plugins: false
+  # use_dimail_plugins: when true, the plugins listed in the plugins variable will be
+  # enabled on your platform
+
+# By default, the plugins list is empty
+plugins:
+  web: []
