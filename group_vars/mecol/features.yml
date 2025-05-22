@@ -34,7 +34,14 @@ features:
   # use_external_ldap: when true, will install the ldap connectors for dovecot and
   # iterate on the ldap_domains for the configuration
 
+# default_webmail, possible values:
+# - "ox-7", OX version 7 as installed on servers having the "ox" role
+# - "ox-8", OX version 8 running on the kind (kube in docker) on the servers having
+#   the "ox8" role
+# - any other specific values, that must appear in the ox8_clusters list of know
+#   external ox8 clusters
 default_webmail: "ox-7"
+
 # By default, the plugins list is empty
 plugins:
   web: []
