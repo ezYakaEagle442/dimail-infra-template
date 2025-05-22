@@ -3,4 +3,4 @@ ox8_clusters: []
 
 # For each cluster named in ox8_clusters, the list of CIDRs from which connexions
 # will be accepted to MySql
-ox8_cidr: {}
+ox8_cidrs: {}
