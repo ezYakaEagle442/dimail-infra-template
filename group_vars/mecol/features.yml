@@ -34,6 +34,7 @@ features:
   # use_external_ldap: when true, will install the ldap connectors for dovecot and
   # iterate on the ldap_domains for the configuration
 
+default_webmail: "ox-7"
 # By default, the plugins list is empty
 plugins:
   web: []
