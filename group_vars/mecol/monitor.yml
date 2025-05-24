@@ -1,3 +1,6 @@
+# List of users that will be allowed to connect to nagios and prom
+# They will be combined in the (htpasswd) file /etc/monitor/users
+# on the host having the role 'monitor'
 monitor_users:
   - login: choose-a-login
     password: TOBEDEFINED
