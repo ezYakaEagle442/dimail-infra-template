@@ -33,6 +33,10 @@ features:
   use_external_ldap: false
   # use_external_ldap: when true, will install the ldap connectors for dovecot and
   # iterate on the ldap_domains for the configuration
+  kube_for_ox8: "k3s"
+  # kube_for_ox8: select a variant for kubernetes cluster installation
+  # possible values: "k3s" or "kind" is supported
+  # k3s is recommended for production purpose (multi-node support soon)
 
 # default_webmail, possible values:
 # - "ox-7", OX version 7 as installed on servers having the "ox" role
