@@ -1,0 +1,22 @@
+# kube_apps contient la liste des noms des applications kubernetes à déployer
+# le contenu de cette variable doit être aligné avec la présence de deux autres variables ci-dessous
+kube_apps: ['ox-8', 'ox-8-dev']
+
+# la variable <app>_kube désigne le serveur kube sur lequel doit être installée l'application
+ox-8_kube: 'main'
+ox-8-dev_kube: 'main'
+
+# la variable <app>…app désigne la nature d'application qui doit être déployée
+# pour le moment, seul 'ox8' est connu, et est pris en charge par le rôle 'ox8'
+ox-8_app: 'ox8'
+ox-8-dev_app: 'ox8'
+
+# la variable ox8_clusters contient l'adresse d'un cluster ox-8, interne ou externe à la plateforme
+# le nom peut soit être celui d'une kube_app de type ox8, ou un hostname sur internet
+# ce nom d'hôte étant utilisé en upstream par nginx, assurez vous de son existence avant de rouler
+# la configuration
+ox8_clusters: ['ox-8', 'ox-8-dev', 'ox-8.somewhere-else.on.internet.com']
+ox8_access:
+  ox-8: internal
+  ox-8-dev: internal
+  ox-8.somewhere-else.on.internet.com: external
