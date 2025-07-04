@@ -1,0 +1,4 @@
+# in case of breaking change, we will add a validation code in the Changelog
+# playbook will break at runtime unless you provide necessary codes in this list
+validation_codes:
+  - AZ39CC
