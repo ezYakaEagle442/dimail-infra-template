@@ -42,6 +42,15 @@ features:
   # configure coredns to forward queries to kube host resolver instead of default
   # if false, coredns will use default k3s or rke2 dns resolver (probably google)
 
+  use_dimail_oidc: false
+  # will install the dimail-oidc application and setup the oidc instance of OX to
+  # use it for authentication, need some customization in dimail_oidc.yml to setup
+  # the various secrets and urls
+  use_keycloak_oidc: false
+  # will setup the oidc instance of OX to use an oidc OP provided by keycloak, need
+  # some customization in direct_oidc.yml to setup the various secrets and urls
+
+
 # default_webmail, possible values:
 # - "ox-7", OX version 7 as installed on servers having the "ox" role
 # - "ox-8", OX version 8 running on the kind (kube in docker) on the servers having

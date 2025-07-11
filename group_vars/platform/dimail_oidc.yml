@@ -1,0 +1,21 @@
+# This setup is used when you do oidc authentification on OpenXchange
+# using the dimail-oidc application.
+
+dimail_oidc:
+    # This one is the oidc-client used on OX7, the ones for OX8 are defined
+    # from the kube_apps definitions
+    ox7_client_id: ox7
+    ox7_client_secret: TOBEDEFINED
+    failure_url: https://www.youtube.com/watch?v=xvFZjo5PgG0
+    webmail_domain: "oidc.{{ tech_domain.name }}"
+
+    # Those informations are used to configure the dimail-oidc server and
+    # the webfront which is going to serve it.
+    issuer: https://messagerie.{{ host_domain.name }}
+    cookie_seed: TOBEDEFINED
+    cookie_key: TOBEDEFINED
+    cookie_name: mess_sess
+    domain_name: "messagerie.{{ host_domain.name }}"
+    proconnect_url: THEPROCONNECTURL
+    proconnect_client_id: TOBEDEFINED
+    proconnect_client_secret: TOBEDEFINED
