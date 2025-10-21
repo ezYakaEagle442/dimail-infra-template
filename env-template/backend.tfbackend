@@ -1,0 +1,16 @@
+bucket    = "a-valid-ovh-bucket-please"
+region    = "gra" # (ou sgb, ou whatever)
+
+# For Terraform < 1.6
+# endpoint = "https://s3.gra.io.cloud.ovh.net/"
+# skip_credentials_validation = true
+# skip_region_validation      = true
+
+# For Terraform 1.6.3+
+endpoints = { s3 = "https://s3.gra.io.cloud.ovh.net/" }
+skip_credentials_validation = true
+skip_requesting_account_id  = true
+skip_region_validation      = true
+skip_metadata_api_check     = true
+skip_s3_checksum            = true # will appear in v1.6.3 https://github.com/hashicorp/terraform/pull/34127
+use_path_style              = true
