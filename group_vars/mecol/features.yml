@@ -69,6 +69,8 @@ features:
 #   external ox8 clusters
 default_webmail: "ox8"
 
+default_imap_quota: "42G"
+
 # By default, the plugins list is empty
 plugins:
   web: []
