@@ -61,6 +61,14 @@ features:
   # ansible configures /etc/hosts, sometimes it's annoying.
   set_system_hosts: true
 
+  # allow to limit mailboxes size defined with 
+  # `default_imap_quota` and `dovecot.users.quota` in mysql database
+  use_imap_quota: true
+
+  # add cyberwatch security scans and send results to the cyberwatch server
+  # if enabled, `cyberwatch` property must be defined, (cf cyberwatch.yml)
+  use_cyberwatch: false
+
 # default_webmail, possible values:
 # - "ox-7", OX version 7 as installed on servers having the "ox" role
 # - "ox-8", OX version 8 running on the kind (kube in docker) on the servers having

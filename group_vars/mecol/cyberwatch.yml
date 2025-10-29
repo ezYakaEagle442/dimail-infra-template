@@ -1,0 +1,6 @@
+# cyberwatch:
+#   container: registry.mim-libre.fr/dimail/dimail-cyberwatch-container:68d9d4d7
+#   api:
+#     url: https://votre.cyberwatch.cloud/
+#     key: <votre-clef>
+#     secret: <votre-secret>
