@@ -1,0 +1,35 @@
+---
+ox_context_sets:
+  early_adopter:
+    access:
+      calendar: true
+      contacts: true
+      vcard: true
+      webdav: true
+      webmail: true
+      edit-password: true
+      multiple-mail-accounts: true
+      active-sync: true
+      usm: true
+      tasks: true
+      delegate-tasks: true
+    config_overrides:
+      # Testing enableInternetFreeBusy servlet
+      com.openexchange.calendar.enableInternetFreeBusy: "true"
+      com.openexchange.calendar.publishInternetFreeBusy: "true"
+      com.openexchange.calendar.internetFreeBusyMaximumTimerangePast: "13"
+      com.openexchange.calendar.internetFreeBusyMaximumTimerangeFuture: "62"
+
+  basic:
+    access:
+      calendar: true
+      contacts: true
+      vcard: true
+      webdav: false
+      webmail: true
+      edit-password: true
+      multiple-mail-accounts: false
+      active-sync: false
+      usm: false
+      tasks: false
+      delegate-tasks: false

@@ -1,6 +1,6 @@
 dimail_ui_package_url: https://gitlab.mim-libre.fr/dimail/dimail-ui/-/package_files/3772/download
 dimail_login_package_url: https://gitlab.mim-libre.fr/dimail/dimail-login/-/package_files/3606/download
 dimail_login_version: v0.0.12-1
-api_server_container_tag: v0.1.4
+api_server_container_tag: v0.5.3
 ox_server_docs_url: dinum-mecol-users-docs.s3-website.gra.io.cloud.ovh.net
 

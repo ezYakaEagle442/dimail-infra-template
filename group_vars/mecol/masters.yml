@@ -1,7 +1,0 @@
-masters:
-- platform: template
-  master: TOBEDEFINED
-  pass: TOBEDEFINED
-
-master: {{ masters | selectattr('platform', 'equalto', env_name) | first }}
-

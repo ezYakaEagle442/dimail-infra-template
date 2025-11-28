@@ -2,3 +2,4 @@
 # playbook will break at runtime unless you provide necessary codes in this list
 validation_codes:
   - AZ39CC
+  - KC42PFX
