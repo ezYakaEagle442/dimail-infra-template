@@ -41,6 +41,8 @@ features:
   use_local_resolver_for_kube: true
   # configure coredns to forward queries to kube host resolver instead of default
   # if false, coredns will use default k3s or rke2 dns resolver (probably google)
+  use_ox_app_passwords_for_imap: true
+  use_ox8_totp: true
 
   use_dimail_oidc: false
   # will install the dimail-oidc application and setup the oidc instance of OX to

@@ -1,0 +1,11 @@
+keycloak:
+  keystore_password: "{{ secrets.keycloak_keystore_password }}"
+  admin_password: "{{ secrets.keycloak_admin_password }}"
+oidc:
+  client_id: messagerie
+  client_secret: "{{ secrets.oidc_client_secret }}"
+  keycloak_domain: auth-preprod-apps.beta.numerique.gouv.fr
+  keycloak_realm: applications
+  webmail_domain: webmail.testing.osdev2.dimail1.numerique.gouv.fr
+  client_hosts: webmail.testing.osdev2.dimail1.numerique.gouv.fr
+  failure_url: https://www.youtube.com/watch?v=xvFZjo5PgG0

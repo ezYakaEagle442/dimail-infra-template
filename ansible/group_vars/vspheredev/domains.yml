@@ -1,0 +1,11 @@
+---
+users: []
+
+client_contexts:
+  - id: "1"
+    cluster: oxserver
+    name: dinum
+    tags: [early_adopter, rapid_release]
+    access_combination: groupware_premium
+    admin_username: "{{ ox_admin_username }}"
+    admin_password: "{{ ox_admin_password }}"

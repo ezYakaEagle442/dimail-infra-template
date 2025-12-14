@@ -1,0 +1,22 @@
+# This setup is used when you want to enable oidc authentification on
+# OpenXchange using keycloak as an oidc-op (the setup of keycloak is
+# up to you, we do not provide it).
+
+keycloak_oidc:
+  # FIXME Unclear if the keycloak passwords defined here are really used anywhere...
+  keycloak:
+    keystore_password: TOBEDEFINED
+    admin_password: TOBEDEFINED
+
+  # Those are the settings used to configure OX7. Configuring OX8 via kube_apps
+  # to use keycloak as an oidc-op has not been tested to far. Can probably be done
+  # as a derivative work of the ox8/kube/dimail-oidc setup (99% of the topic
+  # is handled in oidc.properties in the OX config)
+  oidc:
+    client_id: client-id as defined in oidc
+    client_secret: secret for the client-id
+    keycloak_domain: domain.name.keycloak.server.example.com
+    keycloak_realm: your-realm
+    webmail_domain: "webmail.testing.{{ tech_domain.name }}"
+    client_hosts: "webmail.testing.{{ tech_domain.name }}"
+    failure_url: https://www.youtube.com/watch?v=xvFZjo5PgG0

@@ -1,0 +1,8 @@
+external_ldap_domains:
+ - domain_name: example.com
+   ldap_url: ldap://...
+   base:
+   dn:
+   dnpass: 
+   pass_attr: userPassword
+

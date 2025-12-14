@@ -1,40 +1,57 @@
-########################## OVH Project #################################
+# vmware resources variables
+
+datacenter          = "Datacenter"
+datastore           = "toto"
+folder              = "Templates"
+cluster             = "nothing_cluster"
+resource_pool       = "resource"
+esxi_host           = "192.168.150.166"
+template_name       = "debian-12-template"
+host_domain         = "host.vsphere.example.com"
+tech_domain         = "tech.vsphere.example.com"
+os_type             = "debian" # or "debian"
+
 env = {
-  name = "proxmoxdev"
+  name = "vspheredev"
   type = "dev"
-  hosting = "proxmox"
+  hosting = "vmware"
 }
 
 regions = {
-   "main"   = "proxmox"
-   "backup" = "proxmox"
+  dummy: ""
 }
 
-tech_domain = "tech.proxmox.example.com"
-host_domain = "host.proxmox.example.com"
-ttl = 600
+networks = {
+  frontend = {
+    name = "VM Network",
+    ip_range = "192.168.150.0/24"
+    region = "dummy"
+  }
+  backend  = {
+    name = "toto",
+    ip_range = "10.0.0.0/24"
+    region = "dummy"
+  }
+  cluster  = {
+    name = "toto",
+    ip_range = "172.16.0.0/24"
+    region = "dummy"
+  }
+}
 
-### os_k8s_ip_range = "171.33.65.126/32"
-
-### private_network_name = "backend-network"
-dns_nameservers = [
-  "213.186.33.99", # OVH default DNS
-  "80.67.169.12",  # FDN
-  "8.8.8.8",       # Google DNS
-]
+# 
 
 servers = {
   "main" = {
     image           = "bookworm"
-    size            = "big"
+    size            = "tiny"
     public_ip       = "main_ip"
     sql_server_id   = 1
     hostname        = "main"
-    region          = "main"
-    network         = "main"
+    region          = "dummy"
+    network         = "frontend"
     reverse         = "smtp"
     private_ip_num  = 10
-
     roles           = ["bastion", "api_server", "cert_manager", "sql_master", "smtp", "mx", "imap_front", "imap_store", "ox", "webfront", "mail_filter", "kube"]
     api_sql         = "main"
     imap_sql        = "main"
@@ -49,17 +66,17 @@ servers = {
       { name = "maildir",      mount = "/var/mail"     },
       { name = "logs",         mount = "/var/log/mail" },
       { name = "certificates", mount = "/opt/certs"    },
-      { name = "mysql1",       mount = "/var/mysql"    }
+      { name = "mysql1",       mount = "/var/mysql"    },
     ]
-  },
+  }
   "backup" = {
     image           = "bookworm"
     size            = "normal"
     public_ip       = "backup_ip"
     sql_server_id   = 2
     hostname        = "backup"
-    region          = "backup"
-    network         = "backup"
+    region          = "dummy"
+    network         = "frontend"
     private_ip_num  = 11
 
     roles           = ["bastion", "backup_sql", "backup_mail", "cert_user", "solr", "kube_worker"]
@@ -83,8 +100,8 @@ servers = {
     size            = "normal"
     public_ip       = "monitor_ip"
     hostname        = "monitor"
-    region          = "main"
-    network         = "main"
+    region          = "dummy"
+    network         = "frontend"
     private_ip_num  = 12
 
     roles = ["monitor", "bastion", "cert_user", "kubectl"],
@@ -96,36 +113,6 @@ servers = {
   },
 }
 
-volumes = {
-  "maildir"      = { region = "main", size = 1, type = "high-speed" },
-  "mysql1"       = { region = "main", size = 1,  type = "high-speed" },
-  "logs"         = { region = "main", size = 1,  type = "classic" },
-  "certificates" = { region = "main", size = 1,   type = "classic" },
-
-  "maildir2"      = { region = "backup", size = 1, type = "classic" },
-  "mysql2"        = { region = "backup", size = 1,  type = "classic" },
-  "logs2"         = { region = "backup", size = 1,  type = "classic" },
-  "certificates2" = { region = "backup", size = 1,   type = "classic" },
-
-  "certificates3" = { region = "main", size = 5, type = "classic" }
-
-  "certificates4" = { region = "main", size = 5, type = "classic" }
-}
-
-# Ces lignes sont là pour ressembler à Outscale, mais ne sont pas utilisées chez OVH.
-network_range = "10.100.0.0/16"
-networks = {
-  "main" = {
-    "ip_range"  = "10.10.0.0/24"
-    "region"    = "main"
-    "is_public" = true
-  }
-  "backup" = { 
-    "ip_range"  = "10.10.1.0/24" 
-    "region"    = "backup"
-    "is_public" = true
-  }
-}
 
 kube_apps = {
   "ox-8" = {
@@ -136,16 +123,17 @@ kube_apps = {
   },
 }
  
-### global_private_networks = {
-###   "backend-network" = {
-###     vrack_vlan_id = 42
-###     cidr          = "172.21.0.0/16"
-###     new_bits      = 4
-###     regions       = [ "main", "backup", "SBG5", "RBX-A" ]
-###     dns_servers = [
-###       "213.186.33.99", # OVH default DNS
-###       "80.67.169.12",  # FDN
-###       "8.8.8.8",       # Google DNS
-###     ]
-###   }
-### }
+
+volumes = {
+  "maildir"      = { region = "dummy", size = 1, type = "high-speed" },
+  "mysql1"       = { region = "dummy", size = 1,  type = "high-speed" },
+  "logs"         = { region = "dummy", size = 1,  type = "classic" },
+  "certificates" = { region = "dummy", size = 1,   type = "classic" },
+
+  "maildir2"      = { region = "dummy", size = 1, type = "classic" },
+  "mysql2"        = { region = "dummy", size = 1,  type = "classic" },
+  "logs2"         = { region = "dummy", size = 1,  type = "classic" },
+  "certificates2" = { region = "dummy", size = 1,   type = "classic" },
+  "certificates3" = { region = "dummy", size = 5, type = "classic" }
+  "certificates4" = { region = "dummy", size = 5, type = "classic" }
+}

@@ -36,6 +36,13 @@ platforms:
       dkim_selector: ox2024
     host_domain:
       name: "host.proxmox.example.com"
+  vspheredev:
+    tech_domain:
+      name: "tech.vsphere.example.com"
+      cert_name: tech_cert_proxmoxdev
+      dkim_selector: ox2024
+    host_domain:
+      name: "host.vsphere.example.com"
 
 platform: "{{ platforms[env_name] }}"
 services_state: "{{ platform.get('services_state', 'started') }}"
