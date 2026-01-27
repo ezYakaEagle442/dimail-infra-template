@@ -1,0 +1,5 @@
+# The public DNS resolver provided by FDN
+# public_dns_resolver: 80.67.169.12
+# The public DNS resolver provided by Google
+# public_dns_resolver: 8.8.8.8
+# Default is to *not* use a public DNS resolver, which can lead to some failures...
