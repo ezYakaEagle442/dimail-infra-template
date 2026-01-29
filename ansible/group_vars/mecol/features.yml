@@ -77,6 +77,10 @@ features:
   # deploy auditbeat with DINUM settings
   use_auditbeat: false
 
+  # if you enable this feature, SOLR will use all the RAM available on his
+  # server (usefull when solr has its own dedicated server)
+  solr_uses_all_ram: false
+
 # default_webmail, possible values:
 # - "ox-7", OX version 7 as installed on servers having the "ox" role
 # - "ox-8", OX version 8 running on the kind (kube in docker) on the servers having
