@@ -44,15 +44,11 @@ features:
   use_ox_app_passwords_for_imap: true
   use_ox8_totp: true
 
-  use_dimail_oidc: false
+  use_dimail_oidc: true
   # will install the dimail-oidc application and setup the oidc instance of OX to
   # use it for authentication, need some customization in dimail_oidc.yml to setup
   # the various secrets and urls
   use_keycloak_oidc: false
-  # will setup the oidc instance of OX to use an oidc OP provided by keycloak, need
-  # some customization in direct_oidc.yml to setup the various secrets and urls
-  use_dimail_plugins: true
-  # will deploy 
 
   # deploy custom login page for openxchange
   use_custom_login: true
@@ -66,10 +62,6 @@ features:
   # ansible configures /etc/hosts, sometimes it's annoying.
   set_system_hosts: true
 
-  # allow to limit mailboxes size defined with 
-  # `default_imap_quota` and `dovecot.users.quota` in mysql database
-  use_imap_quota: true
-
   # add cyberwatch security scans and send results to the cyberwatch server
   # if enabled, `cyberwatch` property must be defined, (cf cyberwatch.yml)
   use_cyberwatch: false
@@ -81,13 +73,25 @@ features:
   # server (usefull when solr has its own dedicated server)
   solr_uses_all_ram: false
 
+  # enable google authenticator.
+  use_google_authenticator: false
+
+  # skip sysctl tweaks
+  skip_sysctl: true
+
+  # enables rspamd on mail_filter instance
+  # default is false
+  use_rspamd: true
+  use_spamassassin: false
+  use_amavis: false
+
 # default_webmail, possible values:
 # - "ox-7", OX version 7 as installed on servers having the "ox" role
 # - "ox-8", OX version 8 running on the kind (kube in docker) on the servers having
 #   the "ox8" role
 # - any other specific values, that must appear in the ox8_clusters list of know
 #   external ox8 clusters
-default_webmail: "ox8"
+# default_webmail: "ox8"
 
 default_imap_quota: "42G"
 

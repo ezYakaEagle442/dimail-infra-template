@@ -43,6 +43,13 @@ platforms:
       dkim_selector: ox2024
     host_domain:
       name: "host.vsphere.example.com"
+  libvirt:
+    tech_domain:
+      name: "tech.libvirt.example.com"
+      cert_name: tech_cert_libvirt
+      dkim_selector: ox2024
+    host_domain:
+      name: "host.libvirt.example.com"
 
 platform: "{{ platforms[env_name] }}"
 services_state: "{{ platform.get('services_state', 'started') }}"

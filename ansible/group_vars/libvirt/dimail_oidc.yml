@@ -1,0 +1,18 @@
+dimail_oidc:
+    default_client_id: 'ox8-oidc'
+    ox7_client_id: ox7
+    ox7_client_secret: TOBEDEFINEDLONGANDBORING
+    issuer: "https://messagerie.{{ host_domain.name }}"
+    refresh_token_lifetime_d: 90
+    access_token_lifetime_h: 4
+    token_key: TOBEDEFINED
+    cookie_seed: TOBEDEFINED
+    cookie_key: TOBEDEFINED
+    cookie_name: DEVCOOKIE
+    domain_name: "messagerie.{{ host_domain.name }}"
+    webmail_domain: "oidc.{{ tech_domain.name }}"
+    failure_url: https://www.youtube.com/watch?v=xvFZjo5PgG0
+    proconnect_url: "https://auth.agentconnect.gouv.fr/api/v2"
+    proconnect_client_id: GETYOUROWN
+    proconnect_client_secret: GETYOUROWN
+

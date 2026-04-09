@@ -1,0 +1,8 @@
+# List of know external ox8 clusters
+ox8_clusters: []
+
+# For each cluster named in ox8_clusters, the list of CIDRs from which connexions
+# will be accepted to MySql
+ox8_cidrs: {}
+
+kube_app_vars: {}
