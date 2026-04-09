@@ -1,3 +1,9 @@
+# SSH keys
+SSH keys are used to provision admin users on all instances.
+Users are created from public keys name.
+For example, `ssh_keys/coin` will create the `coin` user and push the public key in `/home/coin/.ssh/authorized_keys` on all hosts.
+Ensure you are able to login without password with the key you add (passwordless or ssh-agent)
+
 # DKIM keys
 Good to know
 - DKIM keys are used in `smtp_server` role.
