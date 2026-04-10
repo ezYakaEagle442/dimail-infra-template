@@ -1,5 +1,5 @@
 dimail_oidc:
-    default_client_id: 'ox8-oidc'
+    default_client_id: 'ox8oidc'
     ox7_client_id: ox7
     ox7_client_secret: TOBEDEFINEDLONGANDBORING
     issuer: "https://messagerie.{{ host_domain.name }}"
