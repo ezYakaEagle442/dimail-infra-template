@@ -20,14 +20,15 @@ servers = {
   "main" = {
     "size" = "c2r8"
     "private_ip_num" = 10
-    "roles" = ["api_server", "cert_manager", "sql_master", "smtp", "mx", "imap_front", "imap_store", "webfront", "kube", "mail_filter", "ox", "cert_manager", "bastion", "garage"]
+    "roles" = ["api_server", "cert_manager", "sql_master", "smtp", "mx", "imap_front", "imap_store", "webfront", "kube", "mail_filter", "ox", "cert_manager", "bastion", "object_store"]
+    "object_store_flavor" = "garage"
     "kube_flavor" = "k3s"
     "api_sql" = "main"
     "smtp_sql" = "main"
     "imap_sql" = "main"
     "ox_sql" = "main"
     "ox_name" = "oxserver"
-    "ox_store" = "s3"
+    "ox_store" = "main"
     "ox_params" = ["imap", "prov"]
     "sql_server_id" = 1
     "image" = ""
@@ -38,7 +39,8 @@ servers = {
   "monitor" = {
     "size" = "c1r1"
     "private_ip_num" = 20
-    "roles" = ["cert_user", "monitor", "kubectl"]
+    "roles" = ["cert_user", "monitor", "kubectl", "idp"]
+    "idp_flavor" = "rauthy"
     "kubes" = ["main"]
     "image" = ""
     "local_volumes" = []
@@ -61,16 +63,18 @@ servers = {
 
 
 kube_apps = {
-  "ox8imap" = {
-     "services"     = ["webfront:8888"],
-     "targets"      = ["sql_master:3306", "backup_sql:3307-3326", "mail_filter:11223"],
-     "app"          = "ox8",
-     "kube"         = "main",
-  },
+  # "ox8imap" = {
+  #    "services"     = ["webfront:8888"],
+  #    "targets"      = ["sql_master:3306", "backup_sql:3307-3326", "mail_filter:11223"],
+  #    "app"          = "ox8",
+  #    "params"       = "main",
+  #    "kube"         = "main",
+  # },
   "ox8oidc" = {
      "services"     = ["webfront:8888"],
      "targets"      = ["sql_master:3306", "backup_sql:3307-3326", "mail_filter:11223"],
      "app"          = "ox8-oidc",
+     "params"       = "main",
      "kube"         = "main",
   },
 }

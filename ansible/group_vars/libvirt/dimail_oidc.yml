@@ -12,7 +12,7 @@ dimail_oidc:
     domain_name: "messagerie.{{ host_domain.name }}"
     webmail_domain: "oidc.{{ tech_domain.name }}"
     failure_url: https://www.youtube.com/watch?v=xvFZjo5PgG0
-    proconnect_url: "https://auth.agentconnect.gouv.fr/api/v2"
-    proconnect_client_id: GETYOUROWN
-    proconnect_client_secret: GETYOUROWN
+    proconnect_url: "https://auth.tech.libvirt.example.com/auth/v1"
+    proconnect_client_id: dimail-oidc
+    proconnect_client_secret: NnZQQDPrmeWCnssfjUngEtvDDBPnnMhuVKtKzeSlVFbLXEqIeOUsmAfIsLAahprF
 
