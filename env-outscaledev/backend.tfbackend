@@ -1,0 +1,49 @@
+# https://registry.terraform.io/providers/outscale/outscale/latest/docs/guides/oos-s3-backend-tfstate
+terraform {
+
+  required_providers {
+    outscale = {
+      source  = "outscale/outscale"
+      version = "1.4.0"
+    }
+  }
+  
+  # backend "s3"
+  backend "outscale" {
+
+    access_key              = "YOUR_ACCESS_KEY"
+    secret_key              = "YOUR_SECRET_KEY"
+
+    # https://docs.outscale.com/fr/userguide/%C3%80-propos-des-R%C3%A9gions-et-Sous-r%C3%A9gions.html
+    bucket  = "lasuite-outscale-tfstate"
+    key     = "terraform.tfstate"
+    region  = "eu-west-2"  # région Outscale : eu-west-2a, cloudgouv-eu-west-1c ,  etc.
+
+    # https://docs.outscale.com/fr/userguide/Cr%C3%A9er-un-bucket.html
+    # https://docs.outscale.com/fr/userguide/%C3%80-propos-d-OOS.html
+
+    endpoints = {
+      s3 = "https://oos.eu-west-2.outscale.com"
+    }
+  }
+
+    # Credential source:
+    # - keep it if you rely on ~/.osc/credential
+    # - remove it if you use AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY
+    # profile                  = "<PROFILE>"
+    # shared_credentials_files = ["~/.osc/credential"]
+
+  # https://oos.<REGION>.outscale.com/<BUCKET>/<CLE_DE_L_OBJET>
+  # https://<BUCKET>.oos.<REGION>.outscale.com/<CLE_DE_L_OBJET>
+
+  # https://registry.terraform.io/providers/outscale/outscale/latest/docs
+  # https://api.eu-west-2.outscale.com/api/v1
+  # ex: "https://api.eu-west-2.outscale.com"
+
+  skip_credentials_validation = true
+  skip_requesting_account_id  = true
+  skip_region_validation      = true
+  skip_metadata_api_check     = true
+  skip_s3_checksum            = true
+  use_path_style              = true
+}
